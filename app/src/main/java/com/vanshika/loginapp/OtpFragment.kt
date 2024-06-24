@@ -1,5 +1,6 @@
 package com.vanshika.loginapp
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -88,16 +89,15 @@ class OtpFragment : Fragment() {
         }
         binding?.btnVerify?.setOnClickListener {
             if (binding?.et1?.text?.toString() == verify_number[0] && binding?.et2?.text?.toString() == verify_number[1] && binding?.et3?.text?.toString() == verify_number[2] && binding?.et4?.text?.toString() == verify_number[3]) {
-//                Dialog(requireContext()).apply {
-//                    setContentView(R.id.tvCongrats)
-//                    show()
-//                val tvCongrats : EditText = requireContext().fin
-//                }
+                Dialog(requireContext()).apply {
+                    setContentView(R.layout.customdialog)
+                    show()
+                }
                 findNavController().navigate(R.id.action_otpFragment_to_passwordFragment)
             }
             else{
                 Dialog(requireContext()).apply {
-                    setContentView(R.id.tvSorry)
+                    setContentView(R.layout.customdialog2)
                     show()
                 }
             }
