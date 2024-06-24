@@ -1,16 +1,13 @@
 package com.vanshika.loginapp
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.vanshika.loginapp.databinding.FragmentOtpBinding
 
@@ -28,13 +25,13 @@ class OtpFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var binding : FragmentOtpBinding ?= null
-    var email = ""
-    var num1 = ""
-    var num2 = ""
-    var num3 = ""
-    var num4 = ""
-    var otp = ""
+    private var binding : FragmentOtpBinding ?= null
+    private var email = ""
+    private var num1 = ""
+    private var num2 = ""
+    private var num3 = ""
+    private var num4 = ""
+    private var otp = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -60,38 +57,38 @@ class OtpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.etGivenEmail?.setText(email)
         binding?.et1?.doOnTextChanged { _, _, _, _ ->
-            var otp = binding?.et1?.text?.toString()?:""
+            val otp = binding?.et1?.text?.toString()?:""
             if(otp.length==1){
                 binding?.et2?.requestFocus()
             }
         }
         binding?.et2?.doOnTextChanged { _, _, _, _ ->
-            var otp = binding?.et2?.text?.toString()?:""
+            val otp = binding?.et2?.text?.toString()?:""
             if(otp.length==1){
                 binding?.et3?.requestFocus()
             }
         }
         binding?.et3?.doOnTextChanged { _, _, _, _ ->
-            var otp = binding?.et3?.text?.toString()?:""
+            val otp = binding?.et3?.text?.toString()?:""
             if(otp.length==1){
                 binding?.et4?.requestFocus()
             }
         }
         binding?.et2?.addTextChangedListener {
-            var otp = binding?.et2?.text?.toString()?:""
-            if(otp.length==0){
+            val otp = binding?.et2?.text?.toString()?:""
+            if(otp.isEmpty()){
                 binding?.et1?.requestFocus()
             }
         }
         binding?.et3?.addTextChangedListener {
-            var otp = binding?.et3?.text?.toString()?:""
-            if(otp.length==0){
+            val otp = binding?.et3?.text?.toString()?:""
+            if(otp.isEmpty()){
                 binding?.et2?.requestFocus()
             }
         }
         binding?.et4?.addTextChangedListener {
-            var otp = binding?.et4?.text?.toString()?:""
-            if(otp.length==0){
+            val otp = binding?.et4?.text?.toString()?:""
+            if(otp.isEmpty()){
                 binding?.et3?.requestFocus()
             }
         }

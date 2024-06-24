@@ -14,4 +14,7 @@
     <string name="sorry">Sorry</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="submit">Submit</string>
+    <string name="login_page">Login Page</string>
+    <string name="otp_page">OTP Page</string>
+    <string name="password_page">Password Page</string>
 </resources>
