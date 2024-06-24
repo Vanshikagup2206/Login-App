@@ -30,14 +30,22 @@ class OtpFragment : Fragment() {
     private var param2: String? = null
     var binding : FragmentOtpBinding ?= null
     var email = ""
-    var verify_number = listOf("4","3","6","8")
-
+    var num1 = ""
+    var num2 = ""
+    var num3 = ""
+    var num4 = ""
+    var otp = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
             email = it.getString("email")?:""
+            otp = it.getInt("otp").toString()
+            num1 = it.getInt("num1").toString()
+            num2 = it.getInt("num2").toString()
+            num3 = it.getInt("num3").toString()
+            num4 = it.getInt("num4").toString()
         }
     }
 
@@ -88,7 +96,7 @@ class OtpFragment : Fragment() {
             }
         }
         binding?.btnVerify?.setOnClickListener {
-            if (binding?.et1?.text?.toString() == verify_number[0] && binding?.et2?.text?.toString() == verify_number[1] && binding?.et3?.text?.toString() == verify_number[2] && binding?.et4?.text?.toString() == verify_number[3]) {
+            if (binding?.et1?.text?.toString() == num1 && binding?.et2?.text?.toString() == num2 && binding?.et3?.text?.toString() == num3 && binding?.et4?.text?.toString() == num4) {
                 Dialog(requireContext()).apply {
                     setContentView(R.layout.customdialog)
                     show()

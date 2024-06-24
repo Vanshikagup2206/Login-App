@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.vanshika.loginapp.databinding.FragmentLoginBinding
+import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,13 +56,18 @@ class LoginFragment : Fragment() {
                 binding?.etEnterYourEmail?.error = resources.getString(R.string.enter_a_valid_email)
             }
             else {
+                var num1 = Random.nextInt(0,9)
+                var num2 = Random.nextInt(0,9)
+                var num3 = Random.nextInt(0,9)
+                var num4 = Random.nextInt(0,9)
                 var bundle = Bundle()
                 bundle.putString("email", binding?.etEnterYourEmail?.text?.toString())
+                bundle.putString("otp","$num1$num2$num3$num4")
                 findNavController().navigate(R.id.action_loginFragment_to_otpFragment, bundle)
                 try{
                     var intent = Intent(Intent.ACTION_SEND)
                     intent.setType("text/email")
-                    intent.putExtra(Intent.EXTRA_TEXT,"Your generated OTP is 4368")
+                    intent.putExtra(Intent.EXTRA_TEXT,"$num1$num2$num3$num4")
                     startActivity(intent)
                 } catch(exception : Exception){
                     Toast.makeText(requireContext(), "sorry cannot open email", Toast.LENGTH_SHORT).show()}
