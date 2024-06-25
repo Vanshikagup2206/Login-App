@@ -2,6 +2,7 @@ package com.vanshika.loginapp
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.otpFragment) as NavHostFragment
         navHostFragment.findNavController().run {
-            toolbar.setupWithNavController(this,AppBarConfiguration(graph))
+            binding?.toolbar?.setupWithNavController(this,AppBarConfiguration(graph))
         }
         navController = findNavController(R.id.host)
         navController?.addOnDestinationChangedListener { navController, destination, arguments ->
@@ -31,4 +32,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+}
+
+private fun Toolbar?.setupWithNavController(
+    navController: NavController,
+    appBarConfiguration: AppBarConfiguration
+) {
+    TODO("Not yet implemented")
 }
