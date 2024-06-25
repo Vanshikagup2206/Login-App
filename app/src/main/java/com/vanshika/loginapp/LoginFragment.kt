@@ -3,13 +3,11 @@ package com.vanshika.loginapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.vanshika.loginapp.databinding.FragmentLoginBinding
 import kotlin.random.Random
@@ -28,7 +26,7 @@ class LoginFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var binding : FragmentLoginBinding ?= null
+    private var binding : FragmentLoginBinding ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +64,7 @@ class LoginFragment : Fragment() {
                 bundle.putString("otp","$num1$num2$num3$num4")
                 findNavController().navigate(R.id.action_loginFragment_to_otpFragment, bundle)
                 try{
-                    var intent = Intent(Intent.ACTION_SEND)
+                    val intent = Intent(Intent.ACTION_SEND)
                     intent.setType("text/email")
                     intent.putExtra(Intent.EXTRA_TEXT,"Your generated OTP is : $num1$num2$num3$num4")
                     startActivity(intent)

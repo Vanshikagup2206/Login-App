@@ -1,15 +1,14 @@
 package com.vanshika.loginapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.vanshika.loginapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    var binding : ActivityMainBinding ?= null
-    var navController : NavController?= null
+    private var binding : ActivityMainBinding ?= null
+    private var navController : NavController?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
