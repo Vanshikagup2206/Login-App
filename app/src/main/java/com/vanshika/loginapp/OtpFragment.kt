@@ -1,7 +1,9 @@
 package com.vanshika.loginapp
 
 import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,22 +29,15 @@ class OtpFragment : Fragment() {
     private var param2: String? = null
     private var binding : FragmentOtpBinding ?= null
     private var email = ""
-    private var num1 = ""
-    private var num2 = ""
-    private var num3 = ""
-    private var num4 = ""
     private var otp = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
             email = it.getString("email")?:""
-            otp = it.getInt("otp").toString()
-            num1 = it.getInt("num1").toString()
-            num2 = it.getInt("num2").toString()
-            num3 = it.getInt("num3").toString()
-            num4 = it.getInt("num4").toString()
+            otp = it.getString("otp").toString()
         }
     }
 
@@ -93,7 +88,9 @@ class OtpFragment : Fragment() {
             }
         }
         binding?.btnVerify?.setOnClickListener {
-            if (binding?.et1?.text?.toString() == num1 && binding?.et2?.text?.toString() == num2 && binding?.et3?.text?.toString() == num3 && binding?.et4?.text?.toString() == num4) {
+//            Log.e(TAG, " otp ${otp}")
+            var enteredOtp ="${binding?.et1?.text?.toString()}${binding?.et2?.text?.toString()}${binding?.et3?.text?.toString()}${binding?.et4?.text?.toString()}"
+            if (otp == enteredOtp) {
                 Dialog(requireContext()).apply {
                     setContentView(R.layout.customdialog)
                     show()
