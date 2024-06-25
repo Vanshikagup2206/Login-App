@@ -1,5 +1,6 @@
 package com.vanshika.loginapp
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         navController = findNavController(R.id.host)
         navController?.addOnDestinationChangedListener { navController, destination, arguments ->
             when (destination.id) {
