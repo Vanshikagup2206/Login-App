@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import com.vanshika.loginapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.otpFragment) as NavHostFragment
+        navHostFragment.findNavController().run {
+            toolbar.setupWithNavController(this,AppBarConfiguration(graph))
+        }
         navController = findNavController(R.id.host)
         navController?.addOnDestinationChangedListener { navController, destination, arguments ->
             when (destination.id) {
