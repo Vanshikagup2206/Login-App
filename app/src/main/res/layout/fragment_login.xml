@@ -12,18 +12,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/enter_your_email_to_get_otp"
-        android:textSize="@dimen/sp_20"/>
+        android:textSize="@dimen/sp_20" />
+
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:id="@+id/etEnterYourEmail"
-        android:hint="@string/enter_your_email"
-        android:inputType="textEmailAddress"/>
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:hint="@string/enter_your_email"
+        android:inputType="textEmailAddress" />
+
+    <Button
         android:id="@+id/btnGetOtp"
-        android:text="@string/get_otp"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/get_otp" />
 </LinearLayout>

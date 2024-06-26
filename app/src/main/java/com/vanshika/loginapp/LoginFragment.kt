@@ -26,7 +26,7 @@ class LoginFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var binding : FragmentLoginBinding ?= null
+    private var binding: FragmentLoginBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,7 @@ class LoginFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater)
@@ -49,27 +48,33 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.btnGetOtp?.setOnClickListener {
-            if(binding?.etEnterYourEmail?.text?.toString().isNullOrEmpty()){
+            if (binding?.etEnterYourEmail?.text?.toString().isNullOrEmpty()) {
                 binding?.etEnterYourEmail?.error = resources.getString(R.string.enter_your_email)
-            }else if(!Patterns.EMAIL_ADDRESS.matcher(binding?.etEnterYourEmail?.getText().toString()).matches()){
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(
+                    binding?.etEnterYourEmail?.getText().toString()
+                ).matches()
+            ) {
                 binding?.etEnterYourEmail?.error = resources.getString(R.string.enter_a_valid_email)
-            }
-            else {
-                val num1 = Random.nextInt(0,9)
-                val num2 = Random.nextInt(0,9)
-                val num3 = Random.nextInt(0,9)
-                val num4 = Random.nextInt(0,9)
+            } else {
+                val num1 = Random.nextInt(0, 9)
+                val num2 = Random.nextInt(0, 9)
+                val num3 = Random.nextInt(0, 9)
+                val num4 = Random.nextInt(0, 9)
                 val bundle = Bundle()
                 bundle.putString("email", binding?.etEnterYourEmail?.text?.toString())
-                bundle.putString("otp","$num1$num2$num3$num4")
+                bundle.putString("otp", "$num1$num2$num3$num4")
                 findNavController().navigate(R.id.action_loginFragment_to_otpFragment, bundle)
-                try{
+                try {
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.setType("text/email")
-                    intent.putExtra(Intent.EXTRA_TEXT,"Your generated OTP is : $num1$num2$num3$num4")
+                    intent.putExtra(
+                        Intent.EXTRA_TEXT, "Your generated OTP is : $num1$num2$num3$num4"
+                    )
                     startActivity(intent)
-                } catch(exception : Exception){
-                    Toast.makeText(requireContext(), "sorry cannot open email", Toast.LENGTH_SHORT).show()}
+                } catch (exception: Exception) {
+                    Toast.makeText(requireContext(), "sorry cannot open email", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
     }
@@ -85,12 +90,11 @@ class LoginFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        fun newInstance(param1: String, param2: String) = LoginFragment().apply {
+            arguments = Bundle().apply {
+                putString(ARG_PARAM1, param1)
+                putString(ARG_PARAM2, param2)
             }
+        }
     }
 }

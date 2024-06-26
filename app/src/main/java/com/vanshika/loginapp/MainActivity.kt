@@ -13,9 +13,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.vanshika.loginapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private var binding : ActivityMainBinding ?= null
-    private var navController : NavController?= null
-    var appBarConfiguration : AppBarConfiguration ?= null
+    private var binding: ActivityMainBinding? = null
+    private var navController: NavController? = null
+    var appBarConfiguration: AppBarConfiguration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +28,16 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController!!, appBarConfiguration!!)
         navController?.addOnDestinationChangedListener { navController, destination, arguments ->
             when (destination.id) {
-                R.id.loginFragment -> supportActionBar?.title = resources.getString(R.string.login_page)
+                R.id.loginFragment -> supportActionBar?.title =
+                    resources.getString(R.string.login_page)
+
                 R.id.otpFragment -> supportActionBar?.title = resources.getString(R.string.otp_page)
-                R.id.passwordFragment -> supportActionBar?.title = resources.getString(R.string.password_page)
+                R.id.passwordFragment -> supportActionBar?.title =
+                    resources.getString(R.string.password_page)
             }
         }
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp() || navController!!.popBackStack()
     }
