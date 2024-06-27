@@ -36,5 +36,9 @@
         android:id="@+id/passwordFragment"
         android:name="com.vanshika.loginapp.PasswordFragment"
         android:label="fragment_password"
-        tools:layout="@layout/fragment_password" />
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

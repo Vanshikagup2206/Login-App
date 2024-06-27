@@ -17,4 +17,6 @@
     <string name="login_page">Login Page</string>
     <string name="otp_page">OTP Page</string>
     <string name="password_page">Password Page</string>
+    <string name="renter_your_password">Re-Enter Your Password</string>
+    <string name="your_password_does_not_match">Your password does not match</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.vanshika.loginapp.databinding.FragmentPasswordBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,6 +46,15 @@ class PasswordFragment : Fragment() {
         binding?.btnSubmit?.setOnClickListener {
             if (binding?.etPassword?.text?.toString().isNullOrEmpty()) {
                 binding?.etPassword?.error = resources.getString(R.string.enter_your_password)
+            }
+            else if (binding?.etReenterPassword?.text?.toString().isNullOrEmpty()){
+                binding?.etReenterPassword?.error = resources.getString(R.string.renter_your_password)
+            }
+            else if (binding?.etPassword?.text?.toString() != binding?.etReenterPassword?.text?.toString()){
+                binding?.etReenterPassword?.error = resources.getString(R.string.your_password_does_not_match)
+            }
+            else{
+                findNavController().navigate(R.id.action_passwordFragment_to_loginFragment)
             }
         }
     }
