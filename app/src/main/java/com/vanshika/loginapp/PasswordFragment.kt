@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.vanshika.loginapp.databinding.FragmentPasswordBinding
 
@@ -54,6 +55,7 @@ class PasswordFragment : Fragment() {
                 binding?.etReenterPassword?.error = resources.getString(R.string.your_password_does_not_match)
             }
             else{
+                Toast.makeText(requireContext(), "Password changed successfully!", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_passwordFragment_to_loginFragment)
             }
         }
