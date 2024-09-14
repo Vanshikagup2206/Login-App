@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.vanshika.loginapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private var binding: ActivityMainBinding? = null
+    private var binding : ActivityMainBinding?= null
     private var navController: NavController? = null
     var appBarConfiguration: AppBarConfiguration? = null
 
